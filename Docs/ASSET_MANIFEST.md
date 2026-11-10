@@ -19,7 +19,7 @@ Legenda: ✅ existe no projecto · ⚠️ existe fora do projecto · ❌ falta
 - Nome: `categoria_nome_variante_##.png` (ex.: `enemy_candongueiro_01.png`).
 - Base de desenho: 1920×1080. Camadas de parallax: 1920 px (3840 px para loop).
 
-> **Nota — powerups existentes:** `zimbo.png` (748×1024, conteúdo 581×692) e `pensador.png` (632×1024, conteúdo 393×983) estão importados como *Multiple* com sub-sprites automáticos inúteis e filtro *Bilinear*. Devem ser recortados ao conteúdo, redimensionados para um tamanho padrão (ex.: 128×128) e importados como *Single* + *Point (no filter)*.
+> **Nota — powerups existentes:** recortados ao conteúdo e reimportados como *Single* + *Point (no filter)*, PPU 100. Dimensões actuais: `zimbo.png` 585×696 e `pensador.png` 397×987. Como estão em alta resolução, ao criar os prefabs será necessário escalá-los (ou ajustar o PPU por textura) para ~0,6 e ~2,0 unidades de altura.
 
 ---
 
