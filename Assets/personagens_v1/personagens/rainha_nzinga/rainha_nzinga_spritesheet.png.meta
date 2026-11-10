@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 12726f38c32aaf649b396e4288ea5cf2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7610173531431452841
+    second: rainha_nzinga_spritesheet_0
+  - first:
+      213: 2066957924977876204
+    second: rainha_nzinga_spritesheet_1
+  - first:
+      213: 7475732930659455862
+    second: rainha_nzinga_spritesheet_2
+  - first:
+      213: 3328403124535154613
+    second: rainha_nzinga_spritesheet_3
+  - first:
+      213: 7560405540584009546
+    second: rainha_nzinga_spritesheet_4
+  - first:
+      213: -4511150972075997987
+    second: rainha_nzinga_spritesheet_5
+  - first:
+      213: -8291465234677829548
+    second: rainha_nzinga_spritesheet_6
+  - first:
+      213: 3158100661552318625
+    second: rainha_nzinga_spritesheet_7
+  - first:
+      213: 6632253385406014251
+    second: rainha_nzinga_spritesheet_8
+  - first:
+      213: -3103227898871912683
+    second: rainha_nzinga_spritesheet_9
+  - first:
+      213: 5139218135305674557
+    second: rainha_nzinga_spritesheet_10
+  - first:
+      213: -1890092329548033022
+    second: rainha_nzinga_spritesheet_11
+  - first:
+      213: 6752299398955859170
+    second: rainha_nzinga_spritesheet_12
+  - first:
+      213: -2118909904885345428
+    second: rainha_nzinga_spritesheet_13
+  - first:
+      213: -782484384714044866
+    second: rainha_nzinga_spritesheet_14
+  - first:
+      213: 4432117226038416179
+    second: rainha_nzinga_spritesheet_15
+  - first:
+      213: 7467226817186170287
+    second: rainha_nzinga_spritesheet_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 335
+        width: 46
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a04d04a184cc9960800000000000000
+      internalID: 7610173531431452841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 335
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cec1cf3184f4fac10800000000000000
+      internalID: 2066957924977876204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 335
+        width: 52
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67395a70e732fb760800000000000000
+      internalID: 7475732930659455862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 335
+        width: 52
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7d733d10dd03e20800000000000000
+      internalID: 3328403124535154613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 169
+        width: 94
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4fa76c48c4fbe860800000000000000
+      internalID: 7560405540584009546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 169
+        width: 84
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4804d871c2561c0800000000000000
+      internalID: -4511150972075997987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 169
+        width: 88
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450f6839c4cceec80800000000000000
+      internalID: -8291465234677829548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 171
+        width: 92
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a880c0c1d3d3db20800000000000000
+      internalID: 3158100661552318625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 169
+        width: 84
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23e189905f7a0c50800000000000000
+      internalID: 6632253385406014251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 169
+        width: 72
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51768a6eaae1fe4d0800000000000000
+      internalID: -3103227898871912683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 169
+        width: 78
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3fd3225aab225740800000000000000
+      internalID: 5139218135305674557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 171
+        width: 92
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20459985a0b05c5e0800000000000000
+      internalID: -1890092329548033022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 3
+        width: 76
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ecf8d3378cf4bd50800000000000000
+      internalID: 6752299398955859170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 3
+        width: 74
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6390400bae1892e0800000000000000
+      internalID: -2118909904885345428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 37
+        width: 66
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a44de099e0425f0800000000000000
+      internalID: -782484384714044866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 3
+        width: 72
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333d8ec722b028d30800000000000000
+      internalID: 4432117226038416179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rainha_nzinga_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 3
+        width: 72
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa507a72a3be0a760800000000000000
+      internalID: 7467226817186170287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      rainha_nzinga_spritesheet_0: 7610173531431452841
+      rainha_nzinga_spritesheet_1: 2066957924977876204
+      rainha_nzinga_spritesheet_10: 5139218135305674557
+      rainha_nzinga_spritesheet_11: -1890092329548033022
+      rainha_nzinga_spritesheet_12: 6752299398955859170
+      rainha_nzinga_spritesheet_13: -2118909904885345428
+      rainha_nzinga_spritesheet_14: -782484384714044866
+      rainha_nzinga_spritesheet_15: 4432117226038416179
+      rainha_nzinga_spritesheet_16: 7467226817186170287
+      rainha_nzinga_spritesheet_2: 7475732930659455862
+      rainha_nzinga_spritesheet_3: 3328403124535154613
+      rainha_nzinga_spritesheet_4: 7560405540584009546
+      rainha_nzinga_spritesheet_5: -4511150972075997987
+      rainha_nzinga_spritesheet_6: -8291465234677829548
+      rainha_nzinga_spritesheet_7: 3158100661552318625
+      rainha_nzinga_spritesheet_8: 6632253385406014251
+      rainha_nzinga_spritesheet_9: -3103227898871912683
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

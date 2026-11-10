@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "unityMCP2D": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8082/mcp",
+      "enabled": true
+    }
+  }
+}

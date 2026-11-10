@@ -1,0 +1,1105 @@
+fileFormatVersion: 2
+guid: a53d08798966b7843992eced7a85e835
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8341347814262965064
+    second: agostinho_neto_spritesheet_0
+  - first:
+      213: -7862863636702306779
+    second: agostinho_neto_spritesheet_1
+  - first:
+      213: 3833153578765143521
+    second: agostinho_neto_spritesheet_2
+  - first:
+      213: 2018721279003781208
+    second: agostinho_neto_spritesheet_3
+  - first:
+      213: 8852447565340330435
+    second: agostinho_neto_spritesheet_4
+  - first:
+      213: -4929226458904021016
+    second: agostinho_neto_spritesheet_5
+  - first:
+      213: 6365213610627141876
+    second: agostinho_neto_spritesheet_6
+  - first:
+      213: 1131733798847223113
+    second: agostinho_neto_spritesheet_7
+  - first:
+      213: 1231588559816221613
+    second: agostinho_neto_spritesheet_8
+  - first:
+      213: 207254287393267390
+    second: agostinho_neto_spritesheet_9
+  - first:
+      213: -4788321434776442828
+    second: agostinho_neto_spritesheet_10
+  - first:
+      213: -2105108408113014373
+    second: agostinho_neto_spritesheet_11
+  - first:
+      213: 5598332681676900326
+    second: agostinho_neto_spritesheet_12
+  - first:
+      213: 7941429084285224285
+    second: agostinho_neto_spritesheet_13
+  - first:
+      213: 7220956499432598250
+    second: agostinho_neto_spritesheet_14
+  - first:
+      213: 4073206301807319831
+    second: agostinho_neto_spritesheet_15
+  - first:
+      213: -652258605505975553
+    second: agostinho_neto_spritesheet_16
+  - first:
+      213: 2886122321239972518
+    second: agostinho_neto_spritesheet_17
+  - first:
+      213: -4303884768130165859
+    second: agostinho_neto_spritesheet_18
+  - first:
+      213: -930068327469667515
+    second: agostinho_neto_spritesheet_19
+  - first:
+      213: 4322069679272351289
+    second: agostinho_neto_spritesheet_20
+  - first:
+      213: 8052693664626865314
+    second: agostinho_neto_spritesheet_21
+  - first:
+      213: 98453522642793778
+    second: agostinho_neto_spritesheet_22
+  - first:
+      213: -7534303513127702794
+    second: agostinho_neto_spritesheet_23
+  - first:
+      213: -4155675912533042285
+    second: agostinho_neto_spritesheet_24
+  - first:
+      213: 2711657026325650268
+    second: agostinho_neto_spritesheet_25
+  - first:
+      213: -5171811083691619432
+    second: agostinho_neto_spritesheet_26
+  - first:
+      213: 2319850583721241604
+    second: agostinho_neto_spritesheet_27
+  - first:
+      213: 1229468762866327510
+    second: agostinho_neto_spritesheet_28
+  - first:
+      213: 4153797195446454340
+    second: agostinho_neto_spritesheet_29
+  - first:
+      213: 1145276767780570917
+    second: agostinho_neto_spritesheet_30
+  - first:
+      213: 4007071726460909068
+    second: agostinho_neto_spritesheet_31
+  - first:
+      213: -2412979893296828443
+    second: agostinho_neto_spritesheet_32
+  - first:
+      213: 312543465479602247
+    second: agostinho_neto_spritesheet_33
+  - first:
+      213: 5471929203528349209
+    second: agostinho_neto_spritesheet_34
+  - first:
+      213: 4567829393429499825
+    second: agostinho_neto_spritesheet_35
+  - first:
+      213: -7477708162229164991
+    second: agostinho_neto_spritesheet_36
+  - first:
+      213: 4679967188977872045
+    second: agostinho_neto_spritesheet_37
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 595
+        width: 60
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bcffd67b549d3c80800000000000000
+      internalID: -8341347814262965064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ed5018e2f71e290800000000000000
+      internalID: -7862863636702306779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 595
+        width: 60
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed40d7fed8123530800000000000000
+      internalID: 3833153578765143521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 595
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 858ea8fbe40f30c10800000000000000
+      internalID: 2018721279003781208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9c1ec88263ada70800000000000000
+      internalID: 8852447565340330435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7b19bd6aed79bb0800000000000000
+      internalID: -4929226458904021016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f099e4fd08c55850800000000000000
+      internalID: 6365213610627141876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9459794d4e9b4bf00800000000000000
+      internalID: 1131733798847223113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3e749154b771110800000000000000
+      internalID: 1231588559816221613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe90422da050e200800000000000000
+      internalID: 207254287393267390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 595
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438e2c156077c8db0800000000000000
+      internalID: -4788321434776442828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 447
+        width: 60
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b995cb06e0729c2e0800000000000000
+      internalID: -2105108408113014373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 447
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e7cfc9a9e541bd40800000000000000
+      internalID: 5598332681676900326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 447
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d55c6c93daf953e60800000000000000
+      internalID: 7941429084285224285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 447
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea6a3f8dadf53460800000000000000
+      internalID: 7220956499432598250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 447
+        width: 56
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71b9b1cfc8fe68830800000000000000
+      internalID: 4073206301807319831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 447
+        width: 70
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffaef1d0146b2f6f0800000000000000
+      internalID: -652258605505975553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 447
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aa95d7b5f09d0820800000000000000
+      internalID: 2886122321239972518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 299
+        width: 62
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9313693b978544c0800000000000000
+      internalID: -4303884768130165859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 299
+        width: 70
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b245ca8cbb713f0800000000000000
+      internalID: -930068327469667515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 299
+        width: 76
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936d38759731bfb30800000000000000
+      internalID: 4322069679272351289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 299
+        width: 78
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a47f15193ae0cf60800000000000000
+      internalID: 8052693664626865314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 299
+        width: 70
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 235720c05f6cd5100800000000000000
+      internalID: 98453522642793778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 151
+        width: 86
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6feab0e8fd6c07790800000000000000
+      internalID: -7534303513127702794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 153
+        width: 96
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b12d776c21456c0800000000000000
+      internalID: -4155675912533042285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 155
+        width: 94
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b15dec2bdb1a520800000000000000
+      internalID: 2711657026325650268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 155
+        width: 96
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b022788390a38b0800000000000000
+      internalID: -5171811083691619432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 151
+        width: 100
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40cefa690d3c13020800000000000000
+      internalID: 2319850583721241604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 151
+        width: 98
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df16196353ff0110800000000000000
+      internalID: 1229468762866327510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 151
+        width: 94
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 448899f9a8045a930800000000000000
+      internalID: 4153797195446454340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 153
+        width: 96
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52781110727d4ef00800000000000000
+      internalID: 1145276767780570917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 3
+        width: 66
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c06b63d318afb9730800000000000000
+      internalID: 4007071726460909068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 5
+        width: 68
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efe1e1529f538ed0800000000000000
+      internalID: -2412979893296828443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 5
+        width: 62
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74008cc30a0665400800000000000000
+      internalID: 312543465479602247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 15
+        width: 80
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916b46c7e9230fb40800000000000000
+      internalID: 5471929203528349209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 21
+        width: 86
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bf04f5c1a0346f30800000000000000
+      internalID: 4567829393429499825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 7
+        width: 92
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 144aa488b08d93890800000000000000
+      internalID: -7477708162229164991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agostinho_neto_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 3
+        width: 64
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dac6283ec5592f040800000000000000
+      internalID: 4679967188977872045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      agostinho_neto_spritesheet_0: -8341347814262965064
+      agostinho_neto_spritesheet_1: -7862863636702306779
+      agostinho_neto_spritesheet_10: -4788321434776442828
+      agostinho_neto_spritesheet_11: -2105108408113014373
+      agostinho_neto_spritesheet_12: 5598332681676900326
+      agostinho_neto_spritesheet_13: 7941429084285224285
+      agostinho_neto_spritesheet_14: 7220956499432598250
+      agostinho_neto_spritesheet_15: 4073206301807319831
+      agostinho_neto_spritesheet_16: -652258605505975553
+      agostinho_neto_spritesheet_17: 2886122321239972518
+      agostinho_neto_spritesheet_18: -4303884768130165859
+      agostinho_neto_spritesheet_19: -930068327469667515
+      agostinho_neto_spritesheet_2: 3833153578765143521
+      agostinho_neto_spritesheet_20: 4322069679272351289
+      agostinho_neto_spritesheet_21: 8052693664626865314
+      agostinho_neto_spritesheet_22: 98453522642793778
+      agostinho_neto_spritesheet_23: -7534303513127702794
+      agostinho_neto_spritesheet_24: -4155675912533042285
+      agostinho_neto_spritesheet_25: 2711657026325650268
+      agostinho_neto_spritesheet_26: -5171811083691619432
+      agostinho_neto_spritesheet_27: 2319850583721241604
+      agostinho_neto_spritesheet_28: 1229468762866327510
+      agostinho_neto_spritesheet_29: 4153797195446454340
+      agostinho_neto_spritesheet_3: 2018721279003781208
+      agostinho_neto_spritesheet_30: 1145276767780570917
+      agostinho_neto_spritesheet_31: 4007071726460909068
+      agostinho_neto_spritesheet_32: -2412979893296828443
+      agostinho_neto_spritesheet_33: 312543465479602247
+      agostinho_neto_spritesheet_34: 5471929203528349209
+      agostinho_neto_spritesheet_35: 4567829393429499825
+      agostinho_neto_spritesheet_36: -7477708162229164991
+      agostinho_neto_spritesheet_37: 4679967188977872045
+      agostinho_neto_spritesheet_4: 8852447565340330435
+      agostinho_neto_spritesheet_5: -4929226458904021016
+      agostinho_neto_spritesheet_6: 6365213610627141876
+      agostinho_neto_spritesheet_7: 1131733798847223113
+      agostinho_neto_spritesheet_8: 1231588559816221613
+      agostinho_neto_spritesheet_9: 207254287393267390
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
