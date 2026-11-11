@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class walkingJumpingPlayer : MonoBehaviour
+// Script antigo (substituido por ControladorJogador). Mantido apenas como referencia.
+public class Movimento : MonoBehaviour
 {
     public float velocidade = 5f;
     public float forcaPulo = 7f;
