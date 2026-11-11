@@ -4,39 +4,25 @@ using UnityEngine.InputSystem;
 namespace CaminhosDeAngola.Jogo
 {
     /// <summary>
-    /// Zungueira que serve de checkpoint. Tem uma zona invisivel (o collider
-    /// trigger) que diz se o jogador esta dentro. So com o jogador dentro da
+    /// Zungueira: checkpoint com zona invisivel. So com o jogador dentro da
     /// zona e que a tecla E activa o checkpoint. A bancada da loja sera
     /// acrescentada na Tarefa 7.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
-    public class CheckpointZungueira : MonoBehaviour
+    public class CheckpointZungueira : CheckpointBase
     {
-        [SerializeField] private GerenciadorVidas gerenciador;
-
+        [Header("Accoes")]
         [Tooltip("Asset de accoes (CaminhosDeAngola.inputactions). Usa a accao 'Interagir'.")]
         [SerializeField] private InputActionAsset accoes;
 
-        [Tooltip("Deslocamento, a partir do centro da zungueira, onde o jogador reaparece.")]
-        [SerializeField] private Vector3 deslocamentoRespawn = new Vector3(0f, -0.28f, 0f);
-
-        [Tooltip("Objecto mostrado quando o jogador esta dentro da zona (ex.: o aviso 'Premir E').")]
-        [SerializeField] private GameObject aviso;
-
-        [SerializeField] private Color corInactiva = new Color(0.95f, 0.55f, 0.12f, 1f);
-        [SerializeField] private Color corActiva = new Color(0.20f, 0.80f, 0.32f, 1f);
+        [SerializeField] private string textoDentro = "Premir E";
 
         private InputAction accaoInteragir;
-        private SpriteRenderer desenho;
         private bool jogadorDentro;
-        private bool activo;
 
-        private void Awake()
+        protected override void Awake()
         {
-            desenho = GetComponent<SpriteRenderer>();
-            if (gerenciador == null) gerenciador = FindAnyObjectByType<GerenciadorVidas>();
-            if (desenho != null) desenho.color = corInactiva;
-            if (aviso != null) aviso.SetActive(false);
+            base.Awake();
 
             if (accoes != null)
             {
@@ -60,7 +46,7 @@ namespace CaminhosDeAngola.Jogo
 
         private void Update()
         {
-            if (!jogadorDentro || accaoInteragir == null) return;
+            if (Activo || !jogadorDentro || accaoInteragir == null) return;
 
             if (accaoInteragir.WasPressedThisFrame())
                 Activar();
@@ -71,7 +57,7 @@ namespace CaminhosDeAngola.Jogo
             if (!outro.CompareTag("Player")) return;
 
             jogadorDentro = true;
-            if (aviso != null) aviso.SetActive(true);
+            if (!Activo) MostrarAvisoPermanente(textoDentro);
         }
 
         private void OnTriggerExit2D(Collider2D outro)
@@ -79,22 +65,7 @@ namespace CaminhosDeAngola.Jogo
             if (!outro.CompareTag("Player")) return;
 
             jogadorDentro = false;
-            if (aviso != null) aviso.SetActive(false);
-        }
-
-        private void Activar()
-        {
-            if (activo) return;
-
-            activo = true;
-
-            if (gerenciador != null)
-                gerenciador.DefinirCheckpoint(transform.position + deslocamentoRespawn);
-
-            if (desenho != null)
-                desenho.color = corActiva;
-
-            if (aviso != null) aviso.SetActive(false);
+            if (!Activo) EsconderAvisoAgora();
         }
     }
 }

@@ -72,6 +72,16 @@ Todos são obstáculos reais no plano principal, com colisão com o jogador.
 | Blocos suspensos | Aparecem e desaparecem por timing; o jogador cai se estiver em cima. | já existem na cena |
 | Valas | Zonas baixas que o jogador tem de saltar, além de zonas elevadas. | tilemap |
 
+### Atirador e bala (detalhe)
+
+- Sprites do atirador: `enemy_atirador_01` (parado), `_02` (a mirar), `_03` (disparo com clarão). Canvas 192×160 px, PPU 100, pivot bottom-center, virado para a direita.
+- Prefab `Bala` com `enemy_bala_01.png` (48×16 px, aponta para a direita), `Rigidbody2D` (Kinematic ou Gravity Scale 0) e collider com *Is Trigger* ligado. Layer Perigo.
+- Objecto filho vazio `FirePoint` na ponta do cano, posição local aproximada **(0.72, 1.06)** (afinar no Inspector).
+- Comportamento: só dispara quando o jogador está dentro de uma distância configurável. Mostra o frame 3 (clarão) cerca de 0,1 s e cria a bala no `FirePoint`. Tem tempo de recarga configurável entre disparos.
+- A bala vai em linha recta (não persegue). Ao tocar no jogador tira 1 vida e destrói-se. Destrói-se também ao tocar no chão ou ao fim de cerca de 3 s.
+- Se o atirador estiver virado para a esquerda, o script faz o flip do sprite e do `FirePoint`.
+- Todos os valores (distância, recarga, velocidade da bala, tempo de vida) expostos no Inspector.
+
 Fora do protótipo inicial (fazer só depois): perseguidor, avião/pássaros com o power-up de voar.
 
 ## 6. Estrutura do nível Luanda
