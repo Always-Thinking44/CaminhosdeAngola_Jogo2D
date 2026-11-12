@@ -249,6 +249,7 @@ namespace CaminhosDeAngola.Jogador
             {
                 animador.SetBool("isWalking", Mathf.Abs(direccao) > 0.01f && noChao);
                 animador.SetBool("isJumping", !noChao);
+                animador.SetBool("isCrouching", estaAgachado);
             }
 
             if (desenho != null && Mathf.Abs(direccao) > 0.01f)
