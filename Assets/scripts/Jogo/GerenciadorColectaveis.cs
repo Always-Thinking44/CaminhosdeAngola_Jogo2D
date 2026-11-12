@@ -56,6 +56,17 @@ namespace CaminhosDeAngola.Jogo
             AoMudarZimbos?.Invoke();
         }
 
+/// <summary>Gasta Zimbos (loja). Devolve falso, sem gastar nada, se nao chegarem.</summary>
+        public bool GastarZimbos(int quantidade)
+        {
+            if (quantidade < 0 || Zimbos < quantidade) return false;
+
+            Zimbos -= quantidade;
+            AoMudarZimbos?.Invoke();
+            return true;
+        }
+
+
         /// <summary>
         /// Regista um item historico. Devolve falso se o identificador ja
         /// tinha sido recolhido, para nunca contar o mesmo item duas vezes.

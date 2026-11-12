@@ -13,12 +13,16 @@ namespace CaminhosDeAngola.Perigos
         [Tooltip("Opcional: se vazio, procura o GerenciadorVidas na cena.")]
         [SerializeField] private GerenciadorVidas gerenciadorVidas;
 
+        [Tooltip("Opcional: se vazio, procura o GerenciadorPowerUps na cena. Com o escudo activo este perigo nao fere.")]
+        [SerializeField] private GerenciadorPowerUps powerUps;
+
         [Tooltip("Ligar para a bala: destroi-se ao tocar no jogador.")]
         [SerializeField] private bool destruirAoTocar;
 
         private void Awake()
         {
             if (gerenciadorVidas == null) gerenciadorVidas = FindAnyObjectByType<GerenciadorVidas>();
+            if (powerUps == null) powerUps = FindAnyObjectByType<GerenciadorPowerUps>();
         }
 
         private void OnTriggerEnter2D(Collider2D outro) => Tocar(outro);
@@ -30,6 +34,13 @@ namespace CaminhosDeAngola.Perigos
         {
             if (gerenciadorVidas == null || !outro.CompareTag("Player")) return;
             if (gerenciadorVidas.Invulneravel) return;
+
+            // Escudo activo: o perigo nao fere (a bala gasta-se na mesma).
+            if (powerUps != null && powerUps.EscudoActivo)
+            {
+                if (destruirAoTocar) Destroy(gameObject);
+                return;
+            }
 
             gerenciadorVidas.PerderVida();
 

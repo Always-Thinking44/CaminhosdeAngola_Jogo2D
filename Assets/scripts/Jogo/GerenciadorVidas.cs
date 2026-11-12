@@ -13,6 +13,8 @@ namespace CaminhosDeAngola.Jogo
     {
         [Header("Vidas")]
         [SerializeField, Min(1)] private int vidasMaximas = 3;
+        [Tooltip("Maximo de vidas que o jogador pode ter (vida extra da loja).")]
+        [SerializeField, Min(1)] private int vidasLimite = 4;
 
         [Header("Jogador")]
         [SerializeField] private Transform jogador;
@@ -37,6 +39,12 @@ namespace CaminhosDeAngola.Jogo
 
         /// <summary>Numero de vidas com que o nivel comeca.</summary>
         public int VidasMaximas => vidasMaximas;
+
+        /// <summary>Maximo de vidas que se pode acumular (vida extra).</summary>
+        public int VidasLimite => Mathf.Max(vidasLimite, vidasMaximas);
+
+        /// <summary>Verdadeiro se ainda cabe uma vida extra.</summary>
+        public bool PodeGanharVida => Vidas < VidasLimite;
 
         /// <summary>Onde o jogador reaparece (ultimo checkpoint ou inicio do nivel).</summary>
         public Vector3 PontoRespawn { get; private set; }
@@ -111,6 +119,17 @@ namespace CaminhosDeAngola.Jogo
             Respawn();
         }
 
+/// <summary>Soma uma vida (loja). Devolve falso se ja esta no limite.</summary>
+        public bool GanharVida()
+        {
+            if (!PodeGanharVida) return false;
+
+            Vidas++;
+            AtualizarHud();
+            return true;
+        }
+
+
         private void Respawn()
         {
             if (corpoJogador != null)
@@ -144,9 +163,10 @@ namespace CaminhosDeAngola.Jogo
             desenhoJogador.enabled = !Invulneravel || (Mathf.FloorToInt(Time.time * 10f) % 2 == 0);
         }
 
-        private void AtualizarHud()
+private void AtualizarHud()
         {
-            if (hud != null) hud.AtualizarVidas(Vidas, vidasMaximas);
+            // Mostra icones a mais enquanto o jogador tiver vidas acima do inicial.
+            if (hud != null) hud.AtualizarVidas(Vidas, Mathf.Max(vidasMaximas, Vidas));
         }
     }
 }

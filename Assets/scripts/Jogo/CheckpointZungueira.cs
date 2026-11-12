@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CaminhosDeAngola.Interface;
 
 namespace CaminhosDeAngola.Jogo
 {
@@ -17,12 +18,19 @@ namespace CaminhosDeAngola.Jogo
 
         [SerializeField] private string textoDentro = "Premir E";
 
+        [Tooltip("Loja que abre ao carregar E. Se vazio, procura a LojaZungueira da cena.")]
+        [SerializeField] private LojaZungueira loja;
+
         private InputAction accaoInteragir;
+        // So fica gasta depois de o jogador comprar alguma coisa: entrar sem comprar nao gasta.
+        private bool lojaGasta;
         private bool jogadorDentro;
 
         protected override void Awake()
         {
             base.Awake();
+
+            if (loja == null) loja = FindAnyObjectByType<LojaZungueira>();
 
             if (accoes != null)
             {
@@ -44,28 +52,46 @@ namespace CaminhosDeAngola.Jogo
             accaoInteragir?.Disable();
         }
 
-        private void Update()
+private void Update()
         {
-            if (Activo || !jogadorDentro || accaoInteragir == null) return;
+            if (lojaGasta || !jogadorDentro || accaoInteragir == null) return;
+            if (loja != null && loja.Aberta) return;
 
             if (accaoInteragir.WasPressedThisFrame())
+            {
                 Activar();
+                if (loja != null) loja.Abrir(this);
+            }
         }
 
-        private void OnTriggerEnter2D(Collider2D outro)
+        /// <summary>Chamado pela loja ao fechar. Depois de comprar, esta zungueira nao abre mais.</summary>
+        public void AoFecharLoja(bool houveCompra)
+        {
+            if (houveCompra)
+            {
+                lojaGasta = true;
+                EsconderAvisoAgora();
+            }
+            else if (jogadorDentro)
+            {
+                MostrarAvisoPermanente(textoDentro);
+            }
+        }
+
+private void OnTriggerEnter2D(Collider2D outro)
         {
             if (!outro.CompareTag("Player")) return;
 
             jogadorDentro = true;
-            if (!Activo) MostrarAvisoPermanente(textoDentro);
+            if (!lojaGasta) MostrarAvisoPermanente(textoDentro);
         }
 
-        private void OnTriggerExit2D(Collider2D outro)
+private void OnTriggerExit2D(Collider2D outro)
         {
             if (!outro.CompareTag("Player")) return;
 
             jogadorDentro = false;
-            if (!Activo) EsconderAvisoAgora();
+            if (!lojaGasta) EsconderAvisoAgora();
         }
     }
 }
