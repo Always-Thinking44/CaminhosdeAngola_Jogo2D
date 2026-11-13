@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CaminhosDeAngola.Jogo
@@ -52,6 +53,25 @@ namespace CaminhosDeAngola.Jogo
         private float recuoRestante;
         private Camera camaraPrincipal;
 
+        // Dissipacao no fim do nivel (jogador apanhou tudo).
+        private class Desvanecimento
+        {
+            public SpriteRenderer sprite;
+            public Color corInicial;
+            public Material material;
+            public bool usaOpacidade;
+            public float valorInicial;
+            public Color materialCorInicial;
+        }
+
+        private readonly List<Desvanecimento> desvanecer = new List<Desvanecimento>();
+        private bool dissipando;
+        private float duracaoDissipar;
+        private float tempoDissipar;
+
+        /// <summary>Verdadeiro quando a nevoa ja desapareceu por completo.</summary>
+        public bool Dissipada { get; private set; }
+
         private void Awake()
         {
             if (jogador == null)
@@ -95,6 +115,12 @@ namespace CaminhosDeAngola.Jogo
 
         private void Update()
         {
+            if (dissipando)
+            {
+                AvancarDissipacao();
+                return;
+            }
+
             float dt = Time.deltaTime;
 
             if (tempoParaArrancar > 0f)
@@ -128,10 +154,83 @@ namespace CaminhosDeAngola.Jogo
         // Chamado quando o jogador volta ao checkpoint: a nevoa fica atras dele.
         private void Repor()
         {
+            if (dissipando || Dissipada) return;
+
             Frente = gerenciadorVidas.PontoRespawn.x - distanciaReposicao;
             recuoRestante = 0f;
             tempoParaArrancar = atrasoAoArrancar;
             AplicarPosicao();
+        }
+
+        /// <summary>
+        /// Fim do nivel com tudo recolhido: a nevoa para, deixa de apanhar o jogador
+        /// e esvanece-se em alguns segundos. Depois desactiva-se.
+        /// </summary>
+        public void Dissipar(float segundos)
+        {
+            if (dissipando || Dissipada) return;
+
+            dissipando = true;
+            duracaoDissipar = Mathf.Max(0.01f, segundos);
+            tempoDissipar = 0f;
+            desvanecer.Clear();
+
+            foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            {
+                SpriteRenderer sprite = r as SpriteRenderer;
+                if (sprite != null)
+                {
+                    desvanecer.Add(new Desvanecimento { sprite = sprite, corInicial = sprite.color });
+                    continue;
+                }
+
+                Material material = r.sharedMaterial;
+                if (material == null) continue;
+
+                if (material.HasProperty("_Opacidade"))
+                    desvanecer.Add(new Desvanecimento { material = material, usaOpacidade = true, valorInicial = material.GetFloat("_Opacidade") });
+                else if (material.HasProperty("_Color"))
+                    desvanecer.Add(new Desvanecimento { material = material, materialCorInicial = material.GetColor("_Color") });
+            }
+
+            foreach (ParticleSystem sistema in GetComponentsInChildren<ParticleSystem>())
+                sistema.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+
+        private void AvancarDissipacao()
+        {
+            tempoDissipar += Time.unscaledDeltaTime;
+            float restante = 1f - Mathf.Clamp01(tempoDissipar / duracaoDissipar);
+
+            foreach (Desvanecimento d in desvanecer)
+            {
+                if (d.sprite != null)
+                {
+                    Color c = d.corInicial;
+                    c.a *= restante;
+                    d.sprite.color = c;
+                }
+                else if (d.material != null)
+                {
+                    if (d.usaOpacidade)
+                    {
+                        d.material.SetFloat("_Opacidade", d.valorInicial * restante);
+                    }
+                    else
+                    {
+                        Color c = d.materialCorInicial;
+                        c.a *= restante;
+                        d.material.SetColor("_Color", c);
+                    }
+                }
+            }
+
+            if (restante <= 0f)
+            {
+                dissipando = false;
+                Dissipada = true;
+                gameObject.SetActive(false);
+            }
         }
 
         // Chamado quando o jogador apanha O Pensador.
