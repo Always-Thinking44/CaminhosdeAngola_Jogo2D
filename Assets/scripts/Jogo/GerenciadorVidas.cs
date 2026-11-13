@@ -55,7 +55,14 @@ namespace CaminhosDeAngola.Jogo
         /// <summary>Disparado sempre que o jogador volta ao checkpoint (a nevoa vai usar isto).</summary>
         public event System.Action AoRespawn;
 
+        /// <summary>Disparado quando as vidas chegam a zero (ecra de fim de jogo). Se ninguem estiver a ouvir, o nivel recomeca.</summary>
+        public event System.Action AoSemVidas;
+
+        /// <summary>Verdadeiro quando o jogador ficou sem vidas.</summary>
+        public bool SemVidas => semVidas;
+
         private float fimInvulnerabilidade;
+        private bool semVidas;
 
         private void Awake()
         {
@@ -105,14 +112,16 @@ namespace CaminhosDeAngola.Jogo
         /// <summary>Tira uma vida ao jogador. Ignorado durante a invulnerabilidade.</summary>
         public void PerderVida()
         {
-            if (Invulneravel) return;
+            if (Invulneravel || semVidas) return;
 
             Vidas = Mathf.Max(0, Vidas - 1);
             AtualizarHud();
 
             if (Vidas <= 0)
             {
-                RecomecarNivel();
+                semVidas = true;
+                if (AoSemVidas != null) AoSemVidas.Invoke();
+                else RecomecarNivel();
                 return;
             }
 
