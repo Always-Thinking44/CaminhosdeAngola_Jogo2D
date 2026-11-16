@@ -31,9 +31,9 @@ namespace CaminhosDeAngola.Interface
 
     /// <summary>
     /// Loja da zungueira. Ao abrir, o jogo pára (Time.timeScale = 0). Mostra a
-    /// lista de power-ups com icone, descricao, duracao e preco; ao escolher,
+    /// lista de power-ups com icone, descricao e preco; ao escolher,
     /// gasta os Zimbos. Podes comprar varios. Escolher com o rato ou com as
-    /// teclas 1, 2, ...; fechar com E ou Esc. A UI e criada por este script.
+    /// teclas 1, 2, ...; fechar com E ou Esc. O aspecto vem do TemaPixel.
     /// </summary>
     public class LojaZungueira : MonoBehaviour
     {
@@ -49,19 +49,13 @@ namespace CaminhosDeAngola.Interface
         [SerializeField] private GerenciadorVidas vidas;
         [SerializeField] private GerenciadorPowerUps powerUps;
 
-        [Header("Cores")]
-        [SerializeField] private Color corCaixa = new Color(0.13f, 0.1f, 0.07f, 0.97f);
-        [SerializeField] private Color corLinha = new Color(0.24f, 0.19f, 0.13f, 1f);
-        [SerializeField] private Color corLinhaSemSaldo = new Color(0.16f, 0.14f, 0.12f, 1f);
-
         private class Linha
         {
-            public Image fundo;
+            public Button botao;
             public Text custo;
         }
 
         private readonly List<Linha> linhas = new List<Linha>();
-        private Font fonte;
         private GameObject painel;
         private Text textoZimbos;
         private Text textoMensagem;
@@ -81,7 +75,6 @@ namespace CaminhosDeAngola.Interface
             if (vidas == null) vidas = FindAnyObjectByType<GerenciadorVidas>();
             if (powerUps == null) powerUps = FindAnyObjectByType<GerenciadorPowerUps>();
 
-            fonte = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             GarantirEventSystem();
             ConstruirInterface();
             painel.SetActive(false);
@@ -106,7 +99,7 @@ namespace CaminhosDeAngola.Interface
             Time.timeScale = 0f;
 
             Aberta = true;
-            DefinirMensagem("", Color.white);
+            DefinirMensagem("", TemaPixel.Creme);
             painel.SetActive(true);
             Actualizar();
         }
@@ -155,7 +148,7 @@ namespace CaminhosDeAngola.Interface
 
             if (colectaveis.Zimbos < opcao.custo)
             {
-                DefinirMensagem("Não tens Zimbos suficientes.", new Color(1f, 0.45f, 0.4f));
+                DefinirMensagem("Não tens Zimbos suficientes.", TemaPixel.TerracotaEscura);
                 return;
             }
 
@@ -170,7 +163,7 @@ namespace CaminhosDeAngola.Interface
                     if (vidas == null) return;
                     if (!vidas.PodeGanharVida)
                     {
-                        DefinirMensagem("Já tens o máximo de vidas (" + vidas.VidasLimite + ").", new Color(1f, 0.85f, 0.4f));
+                        DefinirMensagem("Já tens o máximo de vidas (" + vidas.VidasLimite + ").", TemaPixel.Terracota);
                         return;
                     }
                     vidas.GanharVida();
@@ -179,7 +172,7 @@ namespace CaminhosDeAngola.Interface
 
             colectaveis.GastarZimbos(opcao.custo);
             houveCompra = true;
-            DefinirMensagem(opcao.nome + " comprado!", new Color(0.5f, 1f, 0.55f));
+            DefinirMensagem(opcao.nome + " comprado!", TemaPixel.VerdeEscuro);
             Actualizar();
         }
 
@@ -193,8 +186,8 @@ namespace CaminhosDeAngola.Interface
                 bool temSaldo = colectaveis != null && colectaveis.Zimbos >= opcao.custo;
                 bool vidasCheias = opcao.tipo == TipoPowerUp.VidaExtra && vidas != null && !vidas.PodeGanharVida;
 
-                linhas[i].fundo.color = (temSaldo && !vidasCheias) ? corLinha : corLinhaSemSaldo;
-                linhas[i].custo.color = temSaldo ? Color.white : new Color(1f, 0.45f, 0.4f);
+                TemaPixel.DefinirVariante(linhas[i].botao, (temSaldo && !vidasCheias) ? VarianteBotao.Asfalto : VarianteBotao.Inactivo);
+                linhas[i].custo.color = temSaldo ? TemaPixel.Creme : TemaPixel.VermelhoClaro;
             }
         }
 
@@ -236,72 +229,70 @@ namespace CaminhosDeAngola.Interface
         private void ConstruirInterface()
         {
             RectTransform raiz = (RectTransform)transform;
-            Esticar(raiz);
+            TemaPixel.Esticar(raiz);
 
             // Fundo escuro que cobre o ecra e bloqueia cliques no jogo.
-            RectTransform rPainel = Novo("Painel", raiz);
-            painel = rPainel.gameObject;
-            Esticar(rPainel);
-            painel.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.7f);
+            RectTransform ecra = TemaPixel.CriarFundoEcra(raiz, "Painel");
+            painel = ecra.gameObject;
 
-            RectTransform caixa = Novo("Caixa", rPainel);
-            caixa.anchorMin = caixa.anchorMax = new Vector2(0.5f, 0.5f);
-            caixa.pivot = new Vector2(0.5f, 0.5f);
-            caixa.anchoredPosition = Vector2.zero;
-            caixa.sizeDelta = new Vector2(820f, 100f);
-            caixa.gameObject.AddComponent<Image>().color = corCaixa;
+            RectTransform caixa = TemaPixel.CriarPainel(ecra, 960f, true);
+            TemaPixel.CriarFaixa(caixa, "ZUNGUEIRA", TemaPixel.Amarelo);
 
-            VerticalLayoutGroup vertical = caixa.gameObject.AddComponent<VerticalLayoutGroup>();
-            vertical.padding = new RectOffset(28, 28, 24, 24);
-            vertical.spacing = 12f;
-            vertical.childAlignment = TextAnchor.UpperCenter;
-            vertical.childControlWidth = true;
-            vertical.childControlHeight = true;
-            vertical.childForceExpandWidth = true;
-            vertical.childForceExpandHeight = false;
+            RectTransform saldo = TemaPixel.CriarPlaca(caixa, "Saldo");
+            textoZimbos = TemaPixel.CriarTexto("Zimbos", saldo, "Zimbos: 0", 32, TemaPixel.Amarelo,
+                false, TextAnchor.MiddleCenter, true);
 
-            ContentSizeFitter ajuste = caixa.gameObject.AddComponent<ContentSizeFitter>();
-            ajuste.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-
-            NovoTexto("Titulo", caixa, "ZUNGUEIRA", 40, TextAnchor.MiddleCenter, new Color(1f, 0.82f, 0.4f), 52f, FontStyle.Bold);
-            textoZimbos = NovoTexto("Zimbos", caixa, "Zimbos: 0", 28, TextAnchor.MiddleCenter, Color.white, 36f, FontStyle.Normal);
+            TemaPixel.CriarDivisor(caixa);
 
             linhas.Clear();
             for (int i = 0; i < opcoes.Count; i++)
                 linhas.Add(ConstruirLinha(caixa, i));
 
-            textoMensagem = NovoTexto("Mensagem", caixa, "", 24, TextAnchor.MiddleCenter, Color.white, 34f, FontStyle.Normal);
-            NovoTexto("Ajuda", caixa, "Clica num item ou prime o número   |   E ou Esc para sair", 20, TextAnchor.MiddleCenter, new Color(0.75f, 0.75f, 0.75f), 30f, FontStyle.Normal);
+            textoMensagem = TemaPixel.CriarTexto("Mensagem", caixa, "", 24, TemaPixel.Creme);
+            textoMensagem.gameObject.AddComponent<LayoutElement>().minHeight = 36f;
+
+            TemaPixel.CriarTexto("Ajuda", caixa, "Clica num item ou prime o número     E ou Esc: sair", 24, TemaPixel.Castanho);
         }
 
         private Linha ConstruirLinha(RectTransform pai, int indice)
         {
             OpcaoLoja opcao = opcoes[indice];
 
-            RectTransform rt = Novo("Opcao_" + (indice + 1), pai);
-            Image fundo = rt.gameObject.AddComponent<Image>();
-            fundo.color = corLinha;
+            RectTransform rt = TemaPixel.Novo("Opcao_" + (indice + 1), pai);
+            Image fundo = TemaPixel.AplicarSprite(rt.gameObject.AddComponent<Image>(), "ui_botao_asfalto");
 
             Button botao = rt.gameObject.AddComponent<Button>();
             botao.targetGraphic = fundo;
+            botao.transition = Selectable.Transition.SpriteSwap;
+            TemaPixel.DefinirVariante(botao, VarianteBotao.Asfalto);
             int copia = indice;
             botao.onClick.AddListener(() => Comprar(copia));
 
-            LayoutElement alturaLinha = rt.gameObject.AddComponent<LayoutElement>();
-            alturaLinha.preferredHeight = 96f;
+            rt.gameObject.AddComponent<LayoutElement>().minHeight = 128f;
 
             HorizontalLayoutGroup horizontal = rt.gameObject.AddComponent<HorizontalLayoutGroup>();
-            horizontal.padding = new RectOffset(14, 18, 12, 12);
-            horizontal.spacing = 18f;
+            horizontal.padding = new RectOffset(40, 40, 24, 24);
+            horizontal.spacing = 24f;
             horizontal.childAlignment = TextAnchor.MiddleLeft;
             horizontal.childControlWidth = true;
             horizontal.childControlHeight = true;
             horizontal.childForceExpandWidth = false;
             horizontal.childForceExpandHeight = false;
 
-            // Icone (sprite do power-up ou quadrado colorido).
-            RectTransform rIcone = Novo("Icone", rt);
-            Image icone = rIcone.gameObject.AddComponent<Image>();
+            // Icone numa moldura escura (sprite do power-up ou quadrado colorido).
+            RectTransform moldura = TemaPixel.Novo("Icone", rt);
+            Image imgMoldura = TemaPixel.AplicarSprite(moldura.gameObject.AddComponent<Image>(), "ui_placa_escura");
+            imgMoldura.raycastTarget = false;
+            LayoutElement leMoldura = moldura.gameObject.AddComponent<LayoutElement>();
+            leMoldura.preferredWidth = 80f;
+            leMoldura.preferredHeight = 80f;
+
+            RectTransform dentro = TemaPixel.Novo("Imagem", moldura);
+            dentro.anchorMin = dentro.anchorMax = new Vector2(0.5f, 0.5f);
+            dentro.pivot = new Vector2(0.5f, 0.5f);
+            dentro.anchoredPosition = Vector2.zero;
+            dentro.sizeDelta = new Vector2(48f, 48f);
+            Image icone = dentro.gameObject.AddComponent<Image>();
             icone.raycastTarget = false;
             if (opcao.icone != null)
             {
@@ -312,71 +303,29 @@ namespace CaminhosDeAngola.Interface
             {
                 icone.color = opcao.corPlaceholder;
             }
-            LayoutElement leIcone = rIcone.gameObject.AddComponent<LayoutElement>();
-            leIcone.preferredWidth = 72f;
-            leIcone.preferredHeight = 72f;
 
             // Nome + descricao.
-            RectTransform rTexto = Novo("Texto", rt);
-            Text texto = rTexto.gameObject.AddComponent<Text>();
-            texto.font = fonte;
-            texto.supportRichText = true;
-            texto.alignment = TextAnchor.MiddleLeft;
-            texto.color = Color.white;
-            texto.raycastTarget = false;
-            texto.fontSize = 22;
-            texto.text = "<b><size=30>[" + (indice + 1) + "] " + opcao.nome + "</size></b>\n" + Descricao(opcao);
-            LayoutElement leTexto = rTexto.gameObject.AddComponent<LayoutElement>();
-            leTexto.flexibleWidth = 1f;
+            RectTransform coluna = TemaPixel.Novo("Texto", rt);
+            VerticalLayoutGroup vertical = coluna.gameObject.AddComponent<VerticalLayoutGroup>();
+            vertical.spacing = 8f;
+            vertical.childAlignment = TextAnchor.MiddleLeft;
+            vertical.childControlWidth = true;
+            vertical.childControlHeight = true;
+            vertical.childForceExpandWidth = true;
+            vertical.childForceExpandHeight = false;
+            coluna.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1f;
+
+            TemaPixel.CriarTexto("Nome", coluna, "[" + (indice + 1) + "] " + opcao.nome, 24, TemaPixel.Amarelo,
+                true, TextAnchor.MiddleLeft, true);
+            TemaPixel.CriarTexto("Descricao", coluna, Descricao(opcao), 24, TemaPixel.Creme,
+                false, TextAnchor.MiddleLeft, true);
 
             // Preco.
-            RectTransform rCusto = Novo("Custo", rt);
-            Text custo = rCusto.gameObject.AddComponent<Text>();
-            custo.font = fonte;
-            custo.fontSize = 30;
-            custo.fontStyle = FontStyle.Bold;
-            custo.alignment = TextAnchor.MiddleRight;
-            custo.color = Color.white;
-            custo.raycastTarget = false;
-            custo.text = opcao.custo + " Zimbos";
-            LayoutElement leCusto = rCusto.gameObject.AddComponent<LayoutElement>();
-            leCusto.preferredWidth = 170f;
+            Text custo = TemaPixel.CriarTexto("Custo", rt, opcao.custo + " Zimbos", 24, TemaPixel.Creme,
+                true, TextAnchor.MiddleRight, true);
+            custo.gameObject.AddComponent<LayoutElement>().preferredWidth = 250f;
 
-            return new Linha { fundo = fundo, custo = custo };
-        }
-
-        private Text NovoTexto(string nome, RectTransform pai, string conteudo, int tamanho,
-            TextAnchor alinhamento, Color cor, float altura, FontStyle estilo)
-        {
-            RectTransform rt = Novo(nome, pai);
-            Text texto = rt.gameObject.AddComponent<Text>();
-            texto.font = fonte;
-            texto.fontSize = tamanho;
-            texto.fontStyle = estilo;
-            texto.alignment = alinhamento;
-            texto.color = cor;
-            texto.raycastTarget = false;
-            texto.text = conteudo;
-
-            LayoutElement le = rt.gameObject.AddComponent<LayoutElement>();
-            le.preferredHeight = altura;
-            return texto;
-        }
-
-        private static RectTransform Novo(string nome, Transform pai)
-        {
-            GameObject go = new GameObject(nome, typeof(RectTransform));
-            RectTransform rt = (RectTransform)go.transform;
-            rt.SetParent(pai, false);
-            return rt;
-        }
-
-        private static void Esticar(RectTransform rt)
-        {
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.offsetMin = Vector2.zero;
-            rt.offsetMax = Vector2.zero;
+            return new Linha { botao = botao, custo = custo };
         }
     }
 }
