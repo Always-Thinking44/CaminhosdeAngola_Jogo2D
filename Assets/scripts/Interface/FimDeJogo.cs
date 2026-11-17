@@ -24,7 +24,7 @@ namespace CaminhosDeAngola.Interface
         [SerializeField] private string titulo = "FIM DE JOGO";
         [SerializeField] private string subtitulo = "O Esquecimento apanhou-te. Ficaste sem vidas.";
         [SerializeField] private string textoJogarOutraVez = "Jogar outra vez";
-        [SerializeField] private string textoSair = "Sair do jogo";
+        [SerializeField] private string textoSair = "Menu principal";
 
         private bool mostrado;
 
@@ -73,8 +73,14 @@ namespace CaminhosDeAngola.Interface
 
         private void Sair()
         {
-#if UNITY_EDITOR
             Time.timeScale = 1f;
+            mostrado = false;
+            if (Application.CanStreamedLevelBeLoaded(ProgressoJogo.CenaMenu))
+            {
+                SceneManager.LoadScene(ProgressoJogo.CenaMenu);
+                return;
+            }
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
@@ -124,7 +130,7 @@ namespace CaminhosDeAngola.Interface
             TemaPixel.CriarBotao(linha, textoJogarOutraVez, VarianteBotao.Terra, JogarOutraVez);
             TemaPixel.CriarBotao(linha, textoSair, VarianteBotao.Asfalto, Sair);
 
-            TemaPixel.CriarTexto("Ajuda", caixa, "Enter: jogar outra vez     Esc: sair", 24, TemaPixel.Castanho);
+            TemaPixel.CriarTexto("Ajuda", caixa, "Enter: jogar outra vez     Esc: menu", 24, TemaPixel.Castanho);
         }
 
         private void GarantirEventSystem()

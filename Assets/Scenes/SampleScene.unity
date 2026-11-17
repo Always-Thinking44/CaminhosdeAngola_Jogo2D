@@ -2245,7 +2245,7 @@ Transform:
   m_GameObject: {fileID: 404827073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.75, y: -7.7, z: 0}
+  m_LocalPosition: {x: -1.0418, y: -8.2429, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2305,7 +2305,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 201.5, y: 8.6}
+  m_Size: {x: 37.916412, y: 9.713416}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2394,12 +2394,10 @@ MonoBehaviour:
   colectaveis: {fileID: 0}
   nevoa: {fileID: 0}
   loja: {fileID: 0}
+  indiceNivel: 0
   segundosDissipar: 2
   textoRepetir: "Repetir n\xEDvel"
   textoJogarDeNovo: Jogar de novo
-  corCaixa: {r: 0.13, g: 0.1, b: 0.07, a: 0.97}
-  corSucesso: {r: 0.5, g: 1, b: 0.55, a: 1}
-  corFalha: {r: 1, g: 0.45, b: 0.4, a: 1}
 --- !u!1 &466144013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3066,7 +3064,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3250847, y: 2.045963, z: -10}
+  m_LocalPosition: {x: -5.3250847, y: -0.70000404, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3974,11 +3972,7 @@ MonoBehaviour:
   titulo: FIM DE JOGO
   subtitulo: O Esquecimento apanhou-te. Ficaste sem vidas.
   textoJogarOutraVez: Jogar outra vez
-  textoSair: Sair do jogo
-  corCaixa: {r: 0.13, g: 0.1, b: 0.07, a: 0.97}
-  corTitulo: {r: 1, g: 0.45, b: 0.4, a: 1}
-  corBotaoPrincipal: {r: 0.55, g: 0.36, b: 0.14, a: 1}
-  corBotaoSecundario: {r: 0.3, g: 0.22, b: 0.18, a: 1}
+  textoSair: Menu principal
 --- !u!1 &646744601
 GameObject:
   m_ObjectHideFlags: 0
@@ -9892,6 +9886,97 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1470787958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470787959}
+  - component: {fileID: 1470787960}
+  m_Layer: 0
+  m_Name: Chao_terra_fundo (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1470787959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470787958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 110.2041, y: -7.6755, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589745793}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1470787960
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470787958}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 9
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: bde54f4fe53be9b4084ce31a72485d34, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 2
+  m_Size: {x: 135.50452, y: 8.578673}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &1484696464
 GameObject:
   m_ObjectHideFlags: 0
@@ -10208,6 +10293,7 @@ Transform:
   - {fileID: 565606369}
   - {fileID: 557431109}
   - {fileID: 404827074}
+  - {fileID: 1470787959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599372161
@@ -12913,9 +12999,6 @@ MonoBehaviour:
   colectaveis: {fileID: 0}
   vidas: {fileID: 0}
   powerUps: {fileID: 0}
-  corCaixa: {r: 0.13, g: 0.1, b: 0.07, a: 0.97}
-  corLinha: {r: 0.24, g: 0.19, b: 0.13, a: 1}
-  corLinhaSemSaldo: {r: 0.16, g: 0.14, b: 0.12, a: 1}
 --- !u!1 &1919553876
 GameObject:
   m_ObjectHideFlags: 0

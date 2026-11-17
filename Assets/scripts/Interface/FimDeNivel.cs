@@ -25,6 +25,10 @@ namespace CaminhosDeAngola.Interface
         [SerializeField] private Nevoa nevoa;
         [SerializeField] private LojaZungueira loja;
 
+        [Header("Progresso")]
+        [Tooltip("Indice do nivel no menu: 0 = Luanda, 1 = Malanje, 2 = Huila, 3 = Memoria.")]
+        [SerializeField, Min(0)] private int indiceNivel = 0;
+
         [Header("Fim com sucesso")]
         [Tooltip("Segundos que a nevoa demora a desaparecer antes de aparecer o canvas.")]
         [SerializeField, Min(0f)] private float segundosDissipar = 2f;
@@ -43,6 +47,7 @@ namespace CaminhosDeAngola.Interface
         private readonly List<ItemNivel> itens = new List<ItemNivel>();
         private bool concluido;
         private bool mostrado;
+        private System.Action accaoPrincipal;
 
         private void Awake()
         {
@@ -116,7 +121,20 @@ namespace CaminhosDeAngola.Interface
             if (teclado == null) return;
 
             if (teclado.enterKey.wasPressedThisFrame || teclado.numpadEnterKey.wasPressedThisFrame)
-                Recarregar();
+            {
+                if (accaoPrincipal != null) accaoPrincipal(); else Recarregar();
+            }
+        }
+
+        private void IrParaEscolhaDeNiveis()
+        {
+            Time.timeScale = 1f;
+            mostrado = false;
+            ProgressoJogo.AbrirEscolhaDeNiveis = true;
+            if (Application.CanStreamedLevelBeLoaded(ProgressoJogo.CenaMenu))
+                SceneManager.LoadScene(ProgressoJogo.CenaMenu);
+            else
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void Recarregar()
@@ -135,6 +153,8 @@ namespace CaminhosDeAngola.Interface
             if (mostrado) return;
             mostrado = true;
             Time.timeScale = 0f;
+            if (sucesso) ProgressoJogo.MarcarConcluido(indiceNivel);
+            accaoPrincipal = sucesso ? (System.Action)IrParaEscolhaDeNiveis : Recarregar;
 
             RectTransform raiz = (RectTransform)transform;
             TemaPixel.Esticar(raiz);
@@ -145,7 +165,7 @@ namespace CaminhosDeAngola.Interface
             int total = itens.Count > 0 ? itens.Count : (colectaveis != null ? colectaveis.TotalItensHistoricos : 0);
             int apanhados = colectaveis != null ? colectaveis.ItensHistoricos : 0;
 
-            TemaPixel.CriarFaixa(caixa, sucesso ? "NÍVEL CONCLUÍDO" : "FALHASTE",
+            TemaPixel.CriarFaixa(caixa, sucesso ? "NIVEL CONCLUIDO" : "FALHASTE",
                 sucesso ? TemaPixel.Amarelo : TemaPixel.Creme);
 
             TemaPixel.CriarTexto("Subtitulo", caixa,
@@ -175,8 +195,26 @@ namespace CaminhosDeAngola.Interface
             TemaPixel.CriarTexto("Extra", caixa, "Zimbos: " + zimbos + "     O Pensador: " + pensador,
                 24, TemaPixel.Castanho);
 
-            TemaPixel.CriarBotao(caixa, sucesso ? textoJogarDeNovo : textoRepetir, VarianteBotao.Terra, Recarregar);
-            TemaPixel.CriarTexto("Ajuda", caixa, "Clica no botão ou prime Enter", 24, TemaPixel.Castanho);
+            if (sucesso)
+            {
+                RectTransform botoes = TemaPixel.Novo("Botoes", caixa);
+                botoes.gameObject.AddComponent<LayoutElement>().minHeight = 96f;
+                HorizontalLayoutGroup hb = botoes.gameObject.AddComponent<HorizontalLayoutGroup>();
+                hb.spacing = 24f;
+                hb.childAlignment = TextAnchor.MiddleCenter;
+                hb.childControlWidth = true;
+                hb.childControlHeight = true;
+                hb.childForceExpandWidth = true;
+                hb.childForceExpandHeight = true;
+                TemaPixel.CriarBotao(botoes, "Continuar", VarianteBotao.Terra, IrParaEscolhaDeNiveis);
+                TemaPixel.CriarBotao(botoes, textoJogarDeNovo, VarianteBotao.Asfalto, Recarregar);
+                TemaPixel.CriarTexto("Ajuda", caixa, "Enter: continuar", 24, TemaPixel.Castanho);
+            }
+            else
+            {
+                TemaPixel.CriarBotao(caixa, textoRepetir, VarianteBotao.Terra, Recarregar);
+                TemaPixel.CriarTexto("Ajuda", caixa, "Clica no botão ou prime Enter", 24, TemaPixel.Castanho);
+            }
         }
 
         private void ConstruirLinha(RectTransform pai, ItemNivel item, bool apanhado)

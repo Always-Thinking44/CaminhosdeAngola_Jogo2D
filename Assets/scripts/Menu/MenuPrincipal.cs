@@ -294,8 +294,10 @@ namespace CaminhosDeAngola.Menu
             v.childForceExpandWidth = true;
             v.childForceExpandHeight = false;
 
-            TemaPixel.CriarBotao(botoes, "JOGAR", VarianteBotao.Terra, () => MostrarPagina(Pagina.Jogos, false));
-            TemaPixel.CriarBotao(botoes, "SAIR", VarianteBotao.Asfalto, Sair);
+            Button bJogar = TemaPixel.CriarBotao(botoes, "JOGAR", VarianteBotao.Terra, () => MostrarPagina(Pagina.Jogos, false));
+            Button bSair = TemaPixel.CriarBotao(botoes, "SAIR", VarianteBotao.Asfalto, Sair);
+            bJogar.GetComponentInChildren<Text>().fontSize = 36;
+            bSair.GetComponentInChildren<Text>().fontSize = 36;
 
             Text rodape = TemaPixel.CriarTexto("Rodape", paginaPrincipal, "PROTÓTIPO DE LUANDA", 20, TemaPixel.Creme, false, TextAnchor.MiddleCenter, true);
             RectTransform rr = rodape.rectTransform;
