@@ -15,6 +15,8 @@ namespace CaminhosDeAngola.Jogo
         public string Identificador => identificador;
         public string NomeExibicao => nomeExibicao;
 
+        protected override Sons.Som SomDeRecolha => Sons.Som.ItemHistorico;
+
         protected override bool Recolher()
         {
             if (gerenciador == null)

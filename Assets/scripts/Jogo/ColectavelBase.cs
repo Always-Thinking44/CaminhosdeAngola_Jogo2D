@@ -26,10 +26,15 @@ namespace CaminhosDeAngola.Jogo
             if (!outro.CompareTag("Player")) return;
             if (!Recolher()) return;
 
+            Sons.GerenciadorAudio.Tocar(SomDeRecolha);
+
             Destroy(gameObject);
         }
 
         /// <summary>Efectua a recolha. Devolve falso para manter o objecto na cena.</summary>
         protected abstract bool Recolher();
+
+        /// <summary>Som tocado quando o objecto e recolhido. Cada colectavel pode escolher o seu.</summary>
+        protected virtual Sons.Som SomDeRecolha => Sons.Som.Zimbo;
     }
 }

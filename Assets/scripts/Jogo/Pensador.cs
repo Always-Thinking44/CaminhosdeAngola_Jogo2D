@@ -8,6 +8,8 @@ namespace CaminhosDeAngola.Jogo
     /// </summary>
     public class Pensador : ColectavelBase
     {
+        protected override Sons.Som SomDeRecolha => Sons.Som.Pensador;
+
         protected override bool Recolher()
         {
             if (gerenciador == null)
