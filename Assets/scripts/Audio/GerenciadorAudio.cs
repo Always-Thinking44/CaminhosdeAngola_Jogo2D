@@ -150,10 +150,31 @@ namespace CaminhosDeAngola.Sons
             foreach (var par in r.efeitos)
                 efeitos[par.Key] = CriarClip("Som_" + par.Key, par.Value);
 
+            SubstituirPorFicheiros();
             pronto = true;
             tarefa = null;
 
             if (faixaPedida.HasValue) TocarMusica(faixaPedida.Value);
+        }
+
+        /// <summary>
+        /// Se existirem ficheiros em Assets/Resources/Audio com os nomes Musica_Menu,
+        /// Musica_Luanda e Som_Zimbo, Som_ItemHistorico, etc., usa-os no lugar dos sons
+        /// gerados por codigo. Assim basta trocar um .wav/.mp3/.ogg para mudar o som.
+        /// </summary>
+        private void SubstituirPorFicheiros()
+        {
+            foreach (Faixa f in Enum.GetValues(typeof(Faixa)))
+            {
+                AudioClip c = Resources.Load<AudioClip>("Audio/Musica_" + f);
+                if (c != null) musicas[f] = c;
+            }
+
+            foreach (Som s in Enum.GetValues(typeof(Som)))
+            {
+                AudioClip c = Resources.Load<AudioClip>("Audio/Som_" + s);
+                if (c != null) efeitos[s] = c;
+            }
         }
 
         private static AudioClip CriarClip(string nome, float[] dados)
@@ -170,7 +191,7 @@ namespace CaminhosDeAngola.Sons
 
         private static Faixa FaixaDaCena(string nomeCena)
         {
-            return nomeCena == CenaMenu ? Faixa.Menu : Faixa.Luanda;
+            return nomeCena == CenaMenu || nomeCena == "Puzzle" ? Faixa.Menu : Faixa.Luanda;
         }
 
         /// <summary>Muda a musica de fundo. Se a faixa ja estiver a tocar, nao reinicia.</summary>

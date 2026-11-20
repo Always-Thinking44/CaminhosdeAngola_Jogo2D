@@ -25,6 +25,9 @@ namespace CaminhosDeAngola.Menu
         [Header("Nevoa de fundo")]
         [SerializeField, Min(0f)] private float velocidadeNevoa = 28f;
 
+        /// <summary>Quem volta de um mini-jogo (ex.: Puzzle) pede ao menu para abrir a escolha de jogo.</summary>
+        public static bool AbrirEscolhaDeJogos;
+
         private enum Pagina { Principal, Jogos, Caminhos }
         private enum EstadoCartao { Aberto, Bloqueado, EmBreve }
 
@@ -64,6 +67,11 @@ namespace CaminhosDeAngola.Menu
         private void Start()
         {
             Pagina inicial = Pagina.Principal;
+            if (AbrirEscolhaDeJogos)
+            {
+                AbrirEscolhaDeJogos = false;
+                inicial = Pagina.Jogos;
+            }
             if (ProgressoJogo.AbrirEscolhaDeNiveis)
             {
                 ProgressoJogo.AbrirEscolhaDeNiveis = false;
@@ -318,7 +326,8 @@ namespace CaminhosDeAngola.Menu
                 () => MostrarPagina(Pagina.Caminhos, false), false);
             CriarCartao(fila, "quiz", "QUIZ", "Testa o que sabes sobre Angola.", EstadoCartao.EmBreve, "EM BREVE", null, false);
             CriarCartao(fila, "memoriaj", "MEMORIA", "Encontra os pares da nossa história.", EstadoCartao.EmBreve, "EM BREVE", null, false);
-            CriarCartao(fila, "puzzle", "PUZZLE", "Monta as imagens: 4x4, 6x6, 10x10...", EstadoCartao.EmBreve, "EM BREVE", null, false);
+            CriarCartao(fila, "puzzle", "PUZZLE", "Monta as imagens do nosso património.", EstadoCartao.Aberto, "JOGAR",
+                () => IrParaCena("Puzzle"), false);
 
             BotaoCentrado(caixa, "VOLTAR", VarianteBotao.Asfalto, () => MostrarPagina(Pagina.Principal, false), 420f);
             TemaPixel.CriarTexto("Ajuda", caixa, "Esc: voltar", 20, TemaPixel.Castanho);
@@ -544,6 +553,13 @@ namespace CaminhosDeAngola.Menu
                 yield return null;
             }
             SceneManager.LoadScene(cena);
+        }
+
+        private void IrParaCena(string cena)
+        {
+            if (aTransitar) return;
+            if (!Application.CanStreamedLevelBeLoaded(cena)) return;
+            StartCoroutine(CarregarCena(cena));
         }
 
         private void Sair()
