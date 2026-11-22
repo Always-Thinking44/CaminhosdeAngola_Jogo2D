@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b58af677698a1740b9a477ea40bebda
+guid: 1250116edd7b3e646b50f23202411b35
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7535350701983865032
-    second: chaogrande_0
+      213: 3199625186557113174
+    second: chao_02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chaogrande_0
+      name: chao_02_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1056
-        height: 189
+        width: 188
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 837e246e57e0d6790800000000000000
-      internalID: -7535350701983865032
+      spriteID: 6533123a72a576c20800000000000000
+      internalID: 3199625186557113174
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chaogrande_0: -7535350701983865032
+      chao_02_0: 3199625186557113174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

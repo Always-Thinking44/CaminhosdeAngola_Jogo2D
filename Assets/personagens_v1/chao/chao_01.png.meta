@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c77b61497f8ca7e489ead885a439c862
+guid: 5d7c38a61eef22d40b027b2b07420237
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1558910668410834123
-    second: chao_0elevacao_0
+      213: -2385926835316534159
+    second: chao_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chao_0elevacao_0
+      name: chao_01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 79
-        height: 79
+        width: 276
+        height: 189
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5333ecca103ad5ae0800000000000000
-      internalID: -1558910668410834123
+      spriteID: 174d2e83f2c73eed0800000000000000
+      internalID: -2385926835316534159
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chao_0elevacao_0: -1558910668410834123
+      chao_01_0: -2385926835316534159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
