@@ -21,6 +21,7 @@ namespace CaminhosDeAngola.Menu
     {
         [Header("Cenas")]
         [SerializeField] private string cenaLuanda = "SampleScene";
+        [SerializeField] private string cenaHuila = "Huila";
 
         [Header("Nevoa de fundo")]
         [SerializeField, Min(0f)] private float velocidadeNevoa = 28f;
@@ -532,7 +533,7 @@ namespace CaminhosDeAngola.Menu
                 return;
             }
 
-            string cena = indice == 0 ? cenaLuanda : "";
+            string cena = indice == 0 ? cenaLuanda : (indice == 2 ? cenaHuila : "");
             if (string.IsNullOrEmpty(cena) || !Application.CanStreamedLevelBeLoaded(cena))
             {
                 Avisar(NomesNiveis[indice] + " ainda está em criação.");
