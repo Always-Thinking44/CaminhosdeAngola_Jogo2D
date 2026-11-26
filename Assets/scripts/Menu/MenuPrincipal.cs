@@ -8,12 +8,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using CaminhosDeAngola.Jogo;
 using CaminhosDeAngola.Interface;
+using CaminhosDeAngola.Jogador;
 
 namespace CaminhosDeAngola.Menu
 {
     /// <summary>
     /// Menu principal: Jogar -> escolher o jogo (Corrida, Quiz, Memoria, Puzzle)
-    /// -> escolher o caminho (Luanda, Malanje, Huila, Memoria).
+    /// -> escolher o personagem (Neto, Njinga, Mandume) -> escolher o caminho (Luanda, Malanje, Huila, Memoria).
     /// Constroi todo o canvas ao arrancar, com o TemaPixel. As imagens estao em
     /// Assets/Resources/Menu. Esc volta atras.
     /// </summary>
@@ -29,7 +30,7 @@ namespace CaminhosDeAngola.Menu
         /// <summary>Quem volta de um mini-jogo (ex.: Puzzle) pede ao menu para abrir a escolha de jogo.</summary>
         public static bool AbrirEscolhaDeJogos;
 
-        private enum Pagina { Principal, Jogos, Caminhos }
+        private enum Pagina { Principal, Jogos, Personagem, Caminhos }
         private enum EstadoCartao { Aberto, Bloqueado, EmBreve }
 
         private static readonly string[] NomesNiveis = { "LUANDA", "MALANJE", "HUILA", "MEMORIA" };
@@ -47,6 +48,8 @@ namespace CaminhosDeAngola.Menu
         private RectTransform paginaPrincipal;
         private RectTransform paginaJogos;
         private RectTransform paginaCaminhos;
+        private RectTransform paginaPersonagem;
+        private Button[] botoesPersonagem;
         private Pagina atual = Pagina.Principal;
         private Text aviso;
         private float fimAviso;
@@ -119,7 +122,8 @@ namespace CaminhosDeAngola.Menu
 
             if (teclado.escapeKey.wasPressedThisFrame)
             {
-                if (atual == Pagina.Caminhos) MostrarPagina(Pagina.Jogos, false);
+                if (atual == Pagina.Caminhos) MostrarPagina(PaginaAntesDeCaminhos(), false);
+                else if (atual == Pagina.Personagem) MostrarPagina(Pagina.Jogos, false);
                 else if (atual == Pagina.Jogos) MostrarPagina(Pagina.Principal, false);
             }
 
@@ -183,9 +187,11 @@ namespace CaminhosDeAngola.Menu
             paginaPrincipal = CriarPagina("PaginaPrincipal");
             paginaJogos = CriarPagina("PaginaJogos");
             paginaCaminhos = CriarPagina("PaginaCaminhos");
+            paginaPersonagem = CriarPagina("PaginaPersonagem");
 
             ConstruirPaginaPrincipal();
             ConstruirPaginaJogos();
+            ConstruirPaginaPersonagem();
             ConstruirPaginaCaminhos();
         }
 
@@ -324,7 +330,7 @@ namespace CaminhosDeAngola.Menu
 
             RectTransform fila = CriarFila(caixa);
             CriarCartao(fila, "corrida", "CORRIDA", "Foge do Esquecimento pelas províncias.", EstadoCartao.Aberto, "JOGAR",
-                () => MostrarPagina(Pagina.Caminhos, false), false);
+                () => MostrarPagina(SelecaoPersonagem.Todos.Length > 0 ? Pagina.Personagem : Pagina.Caminhos, false), false);
             CriarCartao(fila, "quiz", "QUIZ", "Testa o que sabes sobre Angola.", EstadoCartao.EmBreve, "EM BREVE", null, false);
             CriarCartao(fila, "memoriaj", "MEMORIA", "Encontra os pares da nossa história.", EstadoCartao.EmBreve, "EM BREVE", null, false);
             CriarCartao(fila, "puzzle", "PUZZLE", "Monta as imagens do nosso património.", EstadoCartao.Aberto, "JOGAR",
@@ -352,10 +358,100 @@ namespace CaminhosDeAngola.Menu
                     () => EscolherNivel(indice), ProgressoJogo.NivelConcluido(i));
             }
 
-            BotaoCentrado(caixa, "VOLTAR", VarianteBotao.Asfalto, () => MostrarPagina(Pagina.Jogos, false), 420f);
+            BotaoCentrado(caixa, "VOLTAR", VarianteBotao.Asfalto, () => MostrarPagina(PaginaAntesDeCaminhos(), false), 420f);
             aviso = TemaPixel.CriarTexto("Aviso", caixa, "", 24, TemaPixel.Amarelo, false, TextAnchor.MiddleCenter, true);
             aviso.gameObject.AddComponent<LayoutElement>().minHeight = 32f;
             TemaPixel.CriarTexto("Ajuda", caixa, "Esc: voltar", 20, TemaPixel.Castanho);
+        }
+
+        /// <summary>De onde se volta a partir dos caminhos: do personagem (ou dos jogos, se nao houver personagens).</summary>
+        private Pagina PaginaAntesDeCaminhos()
+        {
+            return SelecaoPersonagem.Todos.Length > 0 ? Pagina.Personagem : Pagina.Jogos;
+        }
+
+        private void ConstruirPaginaPersonagem()
+        {
+            for (int i = paginaPersonagem.childCount - 1; i >= 0; i--) Destroy(paginaPersonagem.GetChild(i).gameObject);
+
+            PersonagemDados[] todos = SelecaoPersonagem.Todos;
+            int actual = SelecaoPersonagem.Indice;
+
+            RectTransform caixa = TemaPixel.CriarPainel(paginaPersonagem, 1700f, true);
+            TemaPixel.CriarFaixa(caixa, "ESCOLHE O PERSONAGEM", TemaPixel.Amarelo);
+
+            RectTransform fila = CriarFila(caixa);
+            botoesPersonagem = new Button[todos.Length];
+            for (int i = 0; i < todos.Length; i++)
+            {
+                int indice = i;
+                botoesPersonagem[i] = CriarCartaoPersonagem(fila, todos[i], i == actual, () => EscolherPersonagem(indice));
+            }
+
+            BotaoCentrado(caixa, "VOLTAR", VarianteBotao.Asfalto, () => MostrarPagina(Pagina.Jogos, false), 420f);
+            TemaPixel.CriarTexto("Ajuda", caixa, "Setas: escolher     Enter: confirmar     Esc: voltar", 20, TemaPixel.Castanho);
+        }
+
+        private Button CriarCartaoPersonagem(RectTransform pai, PersonagemDados dados, bool escolhido, UnityAction accao)
+        {
+            RectTransform cartao = TemaPixel.Novo("Cartao_" + dados.Nome, pai);
+            Image moldura = cartao.gameObject.AddComponent<Image>();
+            moldura.sprite = TemaPixel.Sprite("ui_cartao");
+            moldura.type = Image.Type.Sliced;
+            LayoutElement leCartao = cartao.gameObject.AddComponent<LayoutElement>();
+            leCartao.preferredWidth = 500f;
+            leCartao.minWidth = 500f;
+
+            VerticalLayoutGroup v = cartao.gameObject.AddComponent<VerticalLayoutGroup>();
+            v.padding = new RectOffset(12, 12, 12, 14);
+            v.spacing = 10f;
+            v.childAlignment = TextAnchor.UpperCenter;
+            v.childControlWidth = true;
+            v.childControlHeight = true;
+            v.childForceExpandWidth = true;
+            v.childForceExpandHeight = false;
+
+            // Palco escuro com o personagem a respirar (animacao do parado).
+            RectTransform palco = TemaPixel.Novo("Palco", cartao);
+            Image fundo = palco.gameObject.AddComponent<Image>();
+            fundo.sprite = TemaPixel.Sprite("ui_placa_escura");
+            fundo.type = Image.Type.Sliced;
+            fundo.raycastTarget = false;
+            LayoutElement lePalco = palco.gameObject.AddComponent<LayoutElement>();
+            lePalco.preferredHeight = 300f;
+            lePalco.minHeight = 300f;
+
+            RectTransform figura = TemaPixel.Novo("Figura", palco);
+            figura.anchorMin = figura.anchorMax = new Vector2(0.5f, 0f);
+            figura.pivot = new Vector2(0.5f, 0f);
+            Image imagem = figura.gameObject.AddComponent<Image>();
+            imagem.raycastTarget = false;
+            figura.gameObject.AddComponent<AnimadorRetrato>().Configurar(imagem, dados.AnimacaoParado, 8f, 1.6f, 24f);
+
+            if (escolhido) CriarEtiqueta(palco, "ACTUAL", "ui_placa_ok", TemaPixel.VerdeEscuro, true);
+
+            Text nome = TemaPixel.CriarTexto("Nome", cartao, dados.Nome.ToUpperInvariant(), 28, TemaPixel.Amarelo, true, TextAnchor.MiddleCenter, true);
+            nome.gameObject.AddComponent<LayoutElement>().minHeight = 44f;
+
+            Text traco = TemaPixel.CriarTexto("Traco", cartao, dados.Traco, 20, TemaPixel.Creme, false, TextAnchor.UpperCenter);
+            traco.gameObject.AddComponent<LayoutElement>().minHeight = 80f;
+
+            return TemaPixel.CriarBotao(cartao, escolhido ? "CONTINUAR" : "ESCOLHER", VarianteBotao.Terra, accao, 80f);
+        }
+
+        private void EscolherPersonagem(int indice)
+        {
+            if (aTransitar) return;
+            SelecaoPersonagem.Indice = indice;
+            MostrarPagina(Pagina.Caminhos, false);
+        }
+
+        private IEnumerator SelecionarPersonagemActual()
+        {
+            yield return null;
+            if (EventSystem.current == null || botoesPersonagem == null || botoesPersonagem.Length == 0) yield break;
+            int i = Mathf.Clamp(SelecaoPersonagem.Indice, 0, botoesPersonagem.Length - 1);
+            if (botoesPersonagem[i] != null) EventSystem.current.SetSelectedGameObject(botoesPersonagem[i].gameObject);
         }
 
         private void ReconstruirCaminhos()
@@ -486,14 +582,17 @@ namespace CaminhosDeAngola.Menu
         {
             atual = destino;
             if (destino == Pagina.Caminhos) ConstruirPaginaCaminhos();
+            if (destino == Pagina.Personagem) ConstruirPaginaPersonagem();
 
-            RectTransform alvo = destino == Pagina.Principal ? paginaPrincipal : (destino == Pagina.Jogos ? paginaJogos : paginaCaminhos);
+            RectTransform alvo = destino == Pagina.Principal ? paginaPrincipal
+                : (destino == Pagina.Jogos ? paginaJogos : (destino == Pagina.Personagem ? paginaPersonagem : paginaCaminhos));
             paginaPrincipal.gameObject.SetActive(alvo == paginaPrincipal);
             paginaJogos.gameObject.SetActive(alvo == paginaJogos);
+            paginaPersonagem.gameObject.SetActive(alvo == paginaPersonagem);
             paginaCaminhos.gameObject.SetActive(alvo == paginaCaminhos);
 
             if (!imediato) StartCoroutine(Aparecer(alvo.GetComponent<CanvasGroup>()));
-            StartCoroutine(SelecionarPrimeiro(alvo));
+            StartCoroutine(destino == Pagina.Personagem ? SelecionarPersonagemActual() : SelecionarPrimeiro(alvo));
         }
 
         private IEnumerator Aparecer(CanvasGroup grupo)

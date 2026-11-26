@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70027b38869b64f4982f113f987cfa7f, type: 3}
+  m_Name: Neto
+  m_EditorClassIdentifier: Assembly-CSharp::CaminhosDeAngola.Jogador.PersonagemDados
+  ordem: 0
+  nome: Agostinho Neto
+  traco: "A n\xE9voa recua mais quando apanha O Pensador."
+  controlador: {fileID: 9100000, guid: effe36c9bee9b4c40b0689d019d8f2d5, type: 2}
+  animacaoParado:
+  - {fileID: 21300000, guid: e00fd55769e04bd4d95bb6d9e265682a, type: 3}
+  - {fileID: 21300000, guid: 910f90b58422e684d8d7ad21d4d32f1f, type: 3}
+  - {fileID: 21300000, guid: e14fc5e1a156f92489a711eb26d147a3, type: 3}
+  - {fileID: 21300000, guid: 3ef5de081d7366540b40bd5301824fe2, type: 3}
+  - {fileID: 21300000, guid: 4d6e75e8c0c03d04ea17ea7bdcb97750, type: 3}
+  - {fileID: 21300000, guid: 35f81e2f8b7f93943936f595d111a526, type: 3}
+  - {fileID: 21300000, guid: e443dbe4e51960a4a95ff03cda24710d, type: 3}
+  - {fileID: 21300000, guid: ef3643249f6de484fab9245edee1bb18, type: 3}
+  - {fileID: 21300000, guid: e5628ca42f00e00408e7a9e96544c07e, type: 3}
+  - {fileID: 21300000, guid: 67bae6cb0359de647b69f2f93ff9a1f1, type: 3}
+  - {fileID: 21300000, guid: 9efd515134579074b8347b7aa8ad515c, type: 3}
+  multiplicadorVelocidade: 1
+  multiplicadorSalto: 1
+  multiplicadorRecuoNevoa: 1.5

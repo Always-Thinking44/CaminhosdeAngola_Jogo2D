@@ -46,6 +46,9 @@ namespace CaminhosDeAngola.Jogo
         [SerializeField] private bool usarParticulas = true;
         [SerializeField, Min(0f)] private float particulasPorSegundo = 6f;
 
+        /// <summary>Multiplica o recuo ao apanhar O Pensador (traco do Agostinho Neto).</summary>
+        public float MultiplicadorRecuo { get; set; } = 1f;
+
         /// <summary>Posicao X da frente da nevoa.</summary>
         public float Frente { get; private set; }
 
@@ -236,7 +239,7 @@ namespace CaminhosDeAngola.Jogo
         // Chamado quando o jogador apanha O Pensador.
         private void Recuar()
         {
-            recuoRestante += distanciaRecuo;
+            recuoRestante += distanciaRecuo * MultiplicadorRecuo;
         }
 
         private void AplicarPosicao()

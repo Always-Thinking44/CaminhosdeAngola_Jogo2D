@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Controlador_Mandume
+  m_Controller: {fileID: 9100000, guid: effe36c9bee9b4c40b0689d019d8f2d5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5fa781343aa982a4e940912fadf257e7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 77d6c25c9b4f7e140959fd3ebff08858, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 85546612c352a5d4dae9f8b60729ea5f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 457fca0fc04fdfa41ab77fb16b28349b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 870429dd4b3677745b685d78e1d978a1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 982f60080a9ba2a4ea79628983bfeaee, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 43c81484bcdb7df43b180e61a197191c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c19387ae84685834db62856617798e42, type: 2}

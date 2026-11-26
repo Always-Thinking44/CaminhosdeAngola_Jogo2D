@@ -58,6 +58,25 @@ namespace CaminhosDeAngola.Jogador
         private Vector2 centroDePe;
         private bool alturaAplicada;
 
+        private float velocidadeBase = -1f;
+        private float forcaPuloBase = -1f;
+
+        /// <summary>
+        /// Traco do personagem escolhido (Njinga salta mais, Mandume corre mais).
+        /// Os multiplicadores aplicam-se sempre aos valores do Inspector.
+        /// </summary>
+        public void AplicarModificadores(float multiplicadorVelocidade, float multiplicadorSalto)
+        {
+            if (velocidadeBase < 0f)
+            {
+                velocidadeBase = velocidade;
+                forcaPuloBase = forcaPulo;
+            }
+
+            velocidade = velocidadeBase * multiplicadorVelocidade;
+            forcaPulo = forcaPuloBase * multiplicadorSalto;
+        }
+
         private void Awake()
         {
             corpo = GetComponent<Rigidbody2D>();

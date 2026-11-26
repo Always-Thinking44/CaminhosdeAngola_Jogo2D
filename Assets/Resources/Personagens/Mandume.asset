@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70027b38869b64f4982f113f987cfa7f, type: 3}
+  m_Name: Mandume
+  m_EditorClassIdentifier: Assembly-CSharp::CaminhosDeAngola.Jogador.PersonagemDados
+  ordem: 2
+  nome: Rei Mandume
+  traco: Corre um pouco mais depressa.
+  controlador: {fileID: 22100000, guid: c1993897682e50f4981467e61c6d50c3, type: 2}
+  animacaoParado:
+  - {fileID: 8920993589186699825, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: 2226745192185626825, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -8190737266042431486, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: 2772242731800154924, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -1260997159224260379, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: 3938809228653443470, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -1511909935690793615, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -8260328934166896572, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -4653762273375315464, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -1052440314607717542, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  - {fileID: -630602613568159994, guid: 8f9e78a5198676248a68a1b0c4135b56, type: 3}
+  multiplicadorVelocidade: 1.12
+  multiplicadorSalto: 1
+  multiplicadorRecuoNevoa: 1
