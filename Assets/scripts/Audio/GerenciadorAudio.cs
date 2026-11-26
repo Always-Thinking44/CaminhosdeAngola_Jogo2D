@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace CaminhosDeAngola.Sons
 {
-    public enum Som { Zimbo, ItemHistorico, Pensador, Dano, Salto, Clique, Zungueira }
+    public enum Som { Zimbo, ItemHistorico, Pensador, Dano, Salto, Clique, Zungueira, Moto }
 
     public enum Faixa { Menu, Luanda }
 
@@ -79,6 +79,18 @@ namespace CaminhosDeAngola.Sons
         public static void Tocar(Som som)
         {
             if (Instancia != null) Instancia.TocarEfeito(som);
+        }
+
+        /// <summary>
+        /// Devolve o clip de um efeito (null se o gestor ainda nao estiver pronto).
+        /// Serve para sons em loop com volume proprio, como o motor da moto.
+        /// </summary>
+        public static AudioClip ClipDe(Som som)
+        {
+            if (Instancia == null || !Instancia.pronto) return null;
+
+            AudioClip clip;
+            return Instancia.efeitos.TryGetValue(som, out clip) ? clip : null;
         }
 
         private void Awake()

@@ -25,7 +25,9 @@ namespace CaminhosDeAngola.Jogo
                 return false;
             }
 
-            return gerenciador.RecolherItem(identificador);
+            bool novo = gerenciador.RecolherItem(identificador);
+            if (novo) Interface.AvisoMonumento.Mostrar(nomeExibicao);
+            return novo;
         }
     }
 }

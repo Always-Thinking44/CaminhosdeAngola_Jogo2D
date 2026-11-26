@@ -296,6 +296,32 @@ namespace CaminhosDeAngola.Sons
         // Efeitos
         // ------------------------------------------------------------------
 
+        /// <summary>
+        /// Motor de moto pequena em loop de 1 s (frequencias inteiras: sem emenda).
+        /// Serra suave a 88 Hz, um segundo cilindro desafinado (batimento de 3 Hz)
+        /// e um tremor de 22 Hz. O Moto.cs ajusta volume e pitch com a distancia.
+        /// </summary>
+        public static float[] MotorMoto()
+        {
+            var o = new float[Taxa];
+            for (int i = 0; i < o.Length; i++)
+            {
+                double t = (double)i / Taxa;
+                double a = 0, b = 0;
+                for (int k = 1; k <= 14; k++)
+                {
+                    double peso = 1.0 / Math.Pow(k, 0.9);
+                    a += peso * Math.Sin(2 * Math.PI * 88 * k * t + k * 0.7);
+                    b += peso * Math.Sin(2 * Math.PI * 91 * k * t + k * 1.9);
+                }
+
+                double tremor = 0.7 + 0.3 * Math.Sin(2 * Math.PI * 22 * t);
+                o[i] = (float)((a + 0.6 * b) * tremor);
+            }
+
+            return Normalizar(o, 0.8f);
+        }
+
         public static float[] Efeito(Som som)
         {
             switch (som)
@@ -347,6 +373,9 @@ namespace CaminhosDeAngola.Sons
                     Somar(o, Kissange(88, 0.5), 0.18, 0.6f, false);
                     return Normalizar(o, 0.8f);
                 }
+
+                case Som.Moto:
+                    return MotorMoto();
 
                 default:
                     return new float[1];

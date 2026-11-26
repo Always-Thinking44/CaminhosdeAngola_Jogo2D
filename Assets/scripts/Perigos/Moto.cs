@@ -1,4 +1,6 @@
 using UnityEngine;
+using CaminhosDeAngola.Jogador;
+using CaminhosDeAngola.Sons;
 
 namespace CaminhosDeAngola.Perigos
 {
@@ -32,6 +34,17 @@ namespace CaminhosDeAngola.Perigos
         [SerializeField, Min(5f)] private float distanciaMaximaDireita = 20f;
         [SerializeField, Min(1f)] private float tempoMaximoVida = 15f;
 
+        [Header("Som do motor")]
+        [Tooltip("Distancia horizontal a que o motor comeca a ouvir-se, enquanto a moto se aproxima (vem da direita).")]
+        [SerializeField, Min(1f)] private float distanciaSomAproximacao = 30f;
+        [Tooltip("Distancia a que o motor deixa de se ouvir depois de a moto passar.")]
+        [SerializeField, Min(1f)] private float distanciaSomAfastamento = 14f;
+        [SerializeField, Range(0f, 1f)] private float volumeMaximoMotor = 1f;
+        [Tooltip("Quanto o pitch sobe ao aproximar e desce ao afastar (efeito Doppler).")]
+        [SerializeField, Range(0f, 0.4f)] private float variacaoPitch = 0.12f;
+
+        private AudioSource fonteMotor;
+        private Transform alvoSom;
         private Rigidbody2D corpo;
         private Camera camara;
         private int camadasChao;
@@ -83,6 +96,58 @@ namespace CaminhosDeAngola.Perigos
 
             if (Time.time >= fimDaVida || ForaDoAlcance())
                 Destroy(gameObject);
+            else
+                AtualizarSomMotor();
+        }
+
+        /// <summary>
+        /// Motor em loop: o volume sobe com a proximidade ao jogador (comeca a
+        /// ouvir-se antes de a moto aparecer, como aviso) e o pitch desce quando
+        /// ela passa. Pausa com o jogo (loja, pausa).
+        /// </summary>
+        private void AtualizarSomMotor()
+        {
+            if (fonteMotor == null)
+            {
+                AudioClip clip = GerenciadorAudio.ClipDe(Som.Moto);
+                if (clip == null) return; // o gestor ainda esta a gerar os sons
+
+                fonteMotor = gameObject.AddComponent<AudioSource>();
+                fonteMotor.clip = clip;
+                fonteMotor.loop = true;
+                fonteMotor.playOnAwake = false;
+                fonteMotor.spatialBlend = 0f;
+                fonteMotor.volume = 0f;
+                fonteMotor.pitch = 1f + variacaoPitch;
+                fonteMotor.Play();
+            }
+
+            if (Time.timeScale <= 0f)
+            {
+                if (fonteMotor.isPlaying) fonteMotor.Pause();
+                return;
+            }
+            if (!fonteMotor.isPlaying) fonteMotor.UnPause();
+
+            if (alvoSom == null)
+            {
+                ControladorJogador jogador = FindAnyObjectByType<ControladorJogador>();
+                if (jogador != null) alvoSom = jogador.transform;
+                else if (camara != null) alvoSom = camara.transform;
+            }
+            if (alvoSom == null) return;
+
+            float dx = transform.position.x - alvoSom.position.x;
+            bool aproximar = dx > 0f;
+            float alcance = aproximar ? distanciaSomAproximacao : distanciaSomAfastamento;
+            float proximidade = Mathf.Clamp01(1f - Mathf.Abs(dx) / alcance);
+
+            float volumeEfeitos = GerenciadorAudio.Instancia != null ? GerenciadorAudio.Instancia.VolumeEfeitos : 0.8f;
+            fonteMotor.volume = volumeMaximoMotor * volumeEfeitos * Mathf.Pow(proximidade, 1.5f);
+            fonteMotor.panStereo = Mathf.Clamp(dx / 12f, -1f, 1f) * 0.7f;
+
+            float pitchAlvo = 1f + (aproximar ? variacaoPitch : -variacaoPitch) * proximidade;
+            fonteMotor.pitch = Mathf.MoveTowards(fonteMotor.pitch, pitchAlvo, 1.5f * Time.deltaTime);
         }
 
         private bool ForaDoAlcance()
