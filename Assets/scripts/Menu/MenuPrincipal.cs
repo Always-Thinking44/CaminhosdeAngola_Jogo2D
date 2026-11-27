@@ -52,6 +52,8 @@ namespace CaminhosDeAngola.Menu
         private Button[] botoesPersonagem;
         private Pagina atual = Pagina.Principal;
         private Text aviso;
+        private Text avisoPrincipal;
+        private RectTransform confirmacao;
         private float fimAviso;
         private readonly RectTransform[] camadasNevoa = new RectTransform[2];
         private readonly float[] larguraNevoa = new float[2];
@@ -115,14 +117,19 @@ namespace CaminhosDeAngola.Menu
         {
             AnimarNevoa();
 
-            if (aviso != null && aviso.text.Length > 0 && Time.unscaledTime > fimAviso) aviso.text = "";
+            if (Time.unscaledTime > fimAviso)
+            {
+                if (aviso != null && aviso.text.Length > 0) aviso.text = "";
+                if (avisoPrincipal != null && avisoPrincipal.text.Length > 0) avisoPrincipal.text = "";
+            }
 
             Keyboard teclado = Keyboard.current;
             if (teclado == null) return;
 
             if (teclado.escapeKey.wasPressedThisFrame)
             {
-                if (atual == Pagina.Caminhos) MostrarPagina(PaginaAntesDeCaminhos(), false);
+                if (confirmacao != null) FecharConfirmacao();
+                else if (atual == Pagina.Caminhos) MostrarPagina(PaginaAntesDeCaminhos(), false);
                 else if (atual == Pagina.Personagem) MostrarPagina(Pagina.Jogos, false);
                 else if (atual == Pagina.Jogos) MostrarPagina(Pagina.Principal, false);
             }
@@ -157,8 +164,9 @@ namespace CaminhosDeAngola.Menu
 
         private void Avisar(string texto)
         {
-            if (aviso == null) return;
-            aviso.text = texto;
+            Text alvo = atual == Pagina.Principal ? avisoPrincipal : aviso;
+            if (alvo == null) return;
+            alvo.text = texto;
             fimAviso = Time.unscaledTime + 3f;
         }
 
@@ -309,7 +317,13 @@ namespace CaminhosDeAngola.Menu
             v.childForceExpandWidth = true;
             v.childForceExpandHeight = false;
 
+            ContentSizeFitter ajusteBotoes = botoes.gameObject.AddComponent<ContentSizeFitter>();
+            ajusteBotoes.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            ajusteBotoes.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+
             Button bJogar = TemaPixel.CriarBotao(botoes, "JOGAR", VarianteBotao.Terra, () => MostrarPagina(Pagina.Jogos, false));
+            Button bReiniciar = TemaPixel.CriarBotao(botoes, "REINICIAR", VarianteBotao.Asfalto, AbrirConfirmacaoReiniciar);
+            bReiniciar.GetComponentInChildren<Text>().fontSize = 36;
             Button bSair = TemaPixel.CriarBotao(botoes, "SAIR", VarianteBotao.Asfalto, Sair);
             bJogar.GetComponentInChildren<Text>().fontSize = 36;
             bSair.GetComponentInChildren<Text>().fontSize = 36;
@@ -321,6 +335,65 @@ namespace CaminhosDeAngola.Menu
             rr.pivot = new Vector2(0.5f, 0f);
             rr.anchoredPosition = new Vector2(0f, 24f);
             rr.sizeDelta = new Vector2(0f, 36f);
+
+            avisoPrincipal = TemaPixel.CriarTexto("Aviso", paginaPrincipal, "", 24, TemaPixel.Amarelo, false, TextAnchor.MiddleCenter, true);
+            RectTransform ra = avisoPrincipal.rectTransform;
+            ra.anchorMin = new Vector2(0f, 0f);
+            ra.anchorMax = new Vector2(1f, 0f);
+            ra.pivot = new Vector2(0.5f, 0f);
+            ra.anchoredPosition = new Vector2(0f, 76f);
+            ra.sizeDelta = new Vector2(0f, 40f);
+        }
+
+        // ---------------------------------------------------------------
+        // Reiniciar progresso
+        // ---------------------------------------------------------------
+
+        /// <summary>Abre a confirmacao: reiniciar apaga os niveis concluidos (nao se desfaz).</summary>
+        private void AbrirConfirmacaoReiniciar()
+        {
+            if (confirmacao != null || aTransitar) return;
+
+            // O menu por baixo fica inactivo (nem o teclado o alcanca).
+            paginaPrincipal.GetComponent<CanvasGroup>().interactable = false;
+
+            confirmacao = TemaPixel.Novo("Confirmacao", raiz);
+            TemaPixel.Esticar(confirmacao);
+            Image escuro = confirmacao.gameObject.AddComponent<Image>();
+            escuro.color = new Color32(8, 6, 16, 200);
+            escuro.raycastTarget = true;
+
+            RectTransform caixa = TemaPixel.CriarPainel(confirmacao, 900f, true);
+            TemaPixel.CriarFaixa(caixa, "REINICIAR PROGRESSO?", TemaPixel.Amarelo);
+
+            Text texto = TemaPixel.CriarTexto("Pergunta", caixa,
+                "Vais perder todos os n\u00EDveis conclu\u00EDdos e voltar a come\u00E7ar por Luanda. Isto n\u00E3o se pode desfazer.",
+                24, TemaPixel.Castanho, false, TextAnchor.MiddleCenter);
+            texto.gameObject.AddComponent<LayoutElement>().minHeight = 140f;
+
+            // Por seguranca, o foco comeca em CANCELAR.
+            Button cancelar = BotaoCentrado(caixa, "CANCELAR", VarianteBotao.Asfalto, FecharConfirmacao, 420f);
+            BotaoCentrado(caixa, "SIM, REINICIAR", VarianteBotao.Terra, ConfirmarReiniciar, 420f);
+            TemaPixel.CriarTexto("Ajuda", caixa, "Esc: cancelar", 20, TemaPixel.Castanho);
+
+            if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(cancelar.gameObject);
+        }
+
+        private void FecharConfirmacao()
+        {
+            if (confirmacao != null) Destroy(confirmacao.gameObject);
+            confirmacao = null;
+            paginaPrincipal.GetComponent<CanvasGroup>().interactable = true;
+            StartCoroutine(SelecionarPrimeiro(paginaPrincipal));
+        }
+
+        private void ConfirmarReiniciar()
+        {
+            ProgressoJogo.Reiniciar();
+            ProgressoJogo.AbrirEscolhaDeNiveis = false;
+            FecharConfirmacao();
+            ConstruirPaginaCaminhos(); // cadeados e etiquetas CONCLUIDO ficam como no inicio
+            Avisar("Progresso reiniciado. Come\u00E7a de novo por Luanda.");
         }
 
         private void ConstruirPaginaJogos()
